@@ -25,7 +25,19 @@ const paymentMethods = require("./routes/paymentMethods");
 const partners = require("./routes/partners");
 const mainRoute = require("./routes/index");
 
+const AdminBro = require("admin-bro");
+const AdminBroMongoose = require("admin-bro-mongoose");
+const AdminBroExpress = require("admin-bro-expressjs");
+
 const app = express();
+
+const adminBro = new AdminBro({
+  databases: [],
+  rootPath: "/admin"
+});
+
+AdminBro.registerAdapter(AdminBroMongoose);
+const router = AdminBroExpress.buildRouter(adminBro);
 
 // Body parser middleware
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -41,10 +53,10 @@ mongoose
   .catch(err => console.log(err));
 
 // Passport middleware
-app.use(passport.initialize());
+// app.use(passport.initialize());
 
 // Passport Config
-require("./config/passport")(passport);
+// require("./config/passport")(passport);
 
 // Use Routes
 app.use("/configs", globalConfigs);
@@ -79,4 +91,5 @@ if (process.env.NODE_ENV === "production") {
 
 const port = process.env.PORT || 5000;
 
+app.use(adminBro.options.rootPath, router);
 app.listen(port, () => console.log(`Server running on port ${port}`));

@@ -8,10 +8,10 @@ module.exports = async passport => {
   const opts = {};
   const configs = await getConfigs();
   opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
-  opts.secretOrKey =
-    process.env.NODE_ENV === "production"
-      ? configs.production.auth.secretOrKey
-      : configs.development.auth.secretOrKey;
+  // opts.secretOrKey =
+  //   process.env.NODE_ENV === "production"
+  //     ? configs.production.auth.secretOrKey
+  //     : configs.development.auth.secretOrKey;
 
   passport.use(
     "jwt",
