@@ -38,8 +38,12 @@ app.use(bodyParser.json());
 const db = require("./config/keys").mongoURI;
 
 // Connect to MongoDB
+mongoose.set("useNewUrlParser", true);
+mongoose.set("useFindAndModify", false);
+mongoose.set("useCreateIndex", true);
+mongoose.set("useUnifiedTopology", true);
 mongoose
-  .connect(db, { useNewUrlParser: true, useFindAndModify: false })
+  .connect(db)
   .then(() => console.log("MongoDB Connected"))
   .catch(err => console.log(err));
 
@@ -71,7 +75,6 @@ app.use("/comments", comments);
 app.use("/shipping-methods", shippingMethods);
 app.use("/payment-methods", paymentMethods);
 app.use("/partners", partners);
-app.use("/", mainRoute);
 
 // Server static assets if in production
 if (process.env.NODE_ENV === "production") {
@@ -81,6 +84,8 @@ if (process.env.NODE_ENV === "production") {
   app.get("*", (req, res) => {
     res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
   });
+} else {
+  app.use("/", mainRoute);
 }
 
 const port = process.env.PORT || 5000;
@@ -88,5 +93,3 @@ const port = process.env.PORT || 5000;
 app.listen(port, () =>
   console.log(`Server running on port ${port}`, process.env.NODE_ENV)
 );
-console.log("Hello This is commit from Sava!!!!!");
-console.log("don't you forget: git pull origin dev");
