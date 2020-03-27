@@ -19,15 +19,19 @@ before_deploy:
   - npm run front-build
   - zip -r deploy_$TRAVIS_BUILD_NUMBER.zip . -x /node_modules* /client*
   - zip -r deploy_$TRAVIS_BUILD_NUMBER.zip ./client/build
+#mkdir upload
+#mv deploy_$TRAVIS_BUILD_NUMBER.zip ./upload/
 
 deploy:
   provider: s3
   access_key_id: $AWS_KEY_ID
   secret_access_key: $AWS_SECRET
   bucket: "fem4"
-  upload-dir: travis-builds
-  skip_cleanup: true
   region: eu-central-1
+  upload-dir: travis-builds
+  glob: deploy_$TRAVIS_BUILD_NUMBER.zip
+  #local_dir: upload
+  skip_cleanup: true
   on:
     branch: master
 
