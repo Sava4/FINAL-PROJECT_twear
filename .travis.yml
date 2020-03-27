@@ -4,9 +4,9 @@ node_js:
   - "12.13.1"
 
 cache:
+  npm: true
   directories:
     - ./client/node_modules
-    - ./node_modules
 
 before_script:
   - npm install --prefix client
