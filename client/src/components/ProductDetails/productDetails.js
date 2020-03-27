@@ -27,10 +27,11 @@ export const ProductDetails = () => {
       setImages(res.data.imageUrls);
       setProducts(res.data);
       setPrice(res.data.previousPrice.toLocaleString("de-CH"));
+      console.log(loading);
       setLoading(false);
     };
     fetchPosts();
-  }, [id]);
+  }, [id, loading]);
 
   return (
     <>

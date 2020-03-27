@@ -31,7 +31,7 @@ export const Search = props => {
         });
     }, 1000);
     setTimer(timeoutId);
-  }, [search]);
+  }, [search, timer]);
 
   return (
     <Filter>

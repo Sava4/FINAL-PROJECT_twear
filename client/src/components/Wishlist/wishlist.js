@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Layout } from "../common/Layout";
 import { WishlistItem } from "./wishlistItem";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import axios from "axios";
 import { v4 } from "uuid";
 import { EmptyCart } from "../ShoppingBag/EmptyCart";

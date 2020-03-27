@@ -8,7 +8,7 @@ import {
 } from "../../store/productsReducer";
 import { ProductsPagination } from "./Pagination";
 // import Preloader from "../common/Preloader/Preloader";
-import { ScrollToTopController } from "./LoadMore";
+// import { ScrollToTopController } from "./LoadMore";
 import { compose } from "redux";
 import {
   getCurrentPage,
@@ -23,7 +23,7 @@ const ProductsContainer = props => {
   const { currentPage, pageSize } = props;
 
   let location = useLocation();
-  let path = `filter${location.search}`;
+  // let path = `filter${location.search}`;
 
   const queryString = require("query-string");
   const parsed = queryString.parse(location.search);
@@ -35,7 +35,7 @@ const ProductsContainer = props => {
 
   useEffect(() => {
     props.getProducts(truePage2, pageSize);
-  }, [truePage2]);
+  }, [truePage2, pageSize, props]);
 
   const onPageChanged = pageNumber => {
     // из пагинатора
@@ -84,7 +84,7 @@ const ProductsContainer = props => {
 let mapStateToProps = state => {
   return {
     products: getProducts(state),
-    products: moreProducts(state),
+    moreProducts: moreProducts(state),
     pageSize: getPageSize(state),
     productsQuantity: getTotalProductsCount(state),
     currentPage: getCurrentPage(state)
