@@ -9,7 +9,7 @@ cache:
     - ./node_modules
 
 before_script:
-  - npm ci --prefix client
+  - npm install --prefix client
   - npm run front:lint
 
 script:
@@ -19,8 +19,8 @@ before_deploy:
   - npm run front-build
   - zip -r deploy_$TRAVIS_BUILD_NUMBER.zip . -x /node_modules* /client*
   - zip -r deploy_$TRAVIS_BUILD_NUMBER.zip ./client/build
-#mkdir upload
-#mv deploy_$TRAVIS_BUILD_NUMBER.zip ./upload/
+  - mkdir upload
+  - mv deploy_$TRAVIS_BUILD_NUMBER.zip ./upload/
 
 deploy:
   provider: s3
@@ -29,8 +29,7 @@ deploy:
   bucket: "fem4"
   region: eu-central-1
   upload-dir: travis-builds
-  glob: deploy_$TRAVIS_BUILD_NUMBER.zip
-  #local_dir: upload
+  local_dir: upload
   skip_cleanup: true
   on:
     branch: master
