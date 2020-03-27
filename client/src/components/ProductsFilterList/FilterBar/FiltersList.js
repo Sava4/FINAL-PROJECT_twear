@@ -7,8 +7,8 @@ import styled from "styled-components";
 import { setTogleShown } from "./../../../store/filters";
 import { setDeleteFilter } from "./../../../store/filters";
 // Console  PRODUCTION MODE
-// import ExpandLessIcon from "@material-ui/icons/ExpandLess";
-// import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import ExpandLessIcon from "@material-ui/icons/ExpandLess";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
 import { PopupCheckboxes } from "./PopupCheckboxes";
 

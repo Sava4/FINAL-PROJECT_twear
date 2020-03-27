@@ -17,6 +17,7 @@ script:
   - npm run test --prefix client
 
 before_deploy:
+  - npm run front-build
   - zip -r deploy_$TRAVIS_BUILD_NUMBER.zip . -x /node_modules* /client*
   - zip -r deploy_$TRAVIS_BUILD_NUMBER.zip ./client/build
 
