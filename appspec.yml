@@ -24,7 +24,7 @@ os: linux
 #   may cause associated deployments to fail.
 files:
   - source: /
-    destination: /var/wwww/FEM4Final
+    destination: /var/www/FEM4Final
 
 # For deployments to Amazon Linux, Ubuntu Server, or RHEL instances,
 #   you can specify a "permissions"
