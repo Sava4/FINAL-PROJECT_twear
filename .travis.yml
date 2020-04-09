@@ -38,7 +38,7 @@ deploy:
     secret_access_key: $AWS_CDP_SECRET
     bucket: fem4
     region: eu-central-1
-    key: deploy_$TRAVIS_BUILD_NUMBER.zip
+    key: travis-builds/deploy_$TRAVIS_BUILD_NUMBER.zip
     bundle_type: zip
     application: Zarina_Application
     deployment_group: Zarina_Deployment_Group
