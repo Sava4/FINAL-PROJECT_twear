@@ -1,7 +1,4 @@
 #!/bin/bash
-
-# check nvm is installed
-#command -v nvm
-#nvm list
-#npm install -g pm2
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 pm2 delete server
