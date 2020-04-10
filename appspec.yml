@@ -81,20 +81,20 @@ hooks:
   BeforeInstall:
     - location: scripts/app_stop.sh
       timeout: 10
-      runas: ubuntu
+    #  runas: ubuntu
   AfterInstall:
     - location: scripts/dep_install.sh
       timeout: 120
-      runas: ubuntu
+    #  runas: ubuntu
   # During the ApplicationStart deployment lifecycle event, run the commands
   #   in the script specified in "location".
   ApplicationStart:
     - location: scripts/app_start.sh
       timeout: 10
-      runas: ubuntu
+    #  runas: ubuntu
   # During the ValidateService deployment lifecycle event, run the commands
   #   in the script specified in "location".
   ValidateService:
     - location: scripts/validate.sh
       timeout: 10
-      runas: ubuntu
+    #  runas: ubuntu
