@@ -96,5 +96,5 @@ hooks:
   #   in the script specified in "location".
   ValidateService:
     - location: scripts/validate.sh
-      timeout: 10
+      timeout: 20
     #  runas: ubuntu
