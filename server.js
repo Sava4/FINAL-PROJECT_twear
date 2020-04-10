@@ -73,6 +73,7 @@ app.use("/payment-methods", paymentMethods);
 app.use("/partners", partners);
 // app.use("/", mainRoute);
 
+// NGINX Serves static files.
 // Server static assets if in production
 // if (process.env.NODE_ENV === "production") {
 //   // Set static folder
