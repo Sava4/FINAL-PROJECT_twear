@@ -22,6 +22,7 @@
     "react-router-dom": "^5.1.2",
     "react-scripts": "^3.4.0",
     "react-slick": "^0.25.2",
+    "react-snap": "^1.23.0",
     "redux": "^4.0.5",
     "redux-devtools-extension": "^2.13.8",
     "redux-logger": "^3.0.6",
@@ -39,7 +40,12 @@
     "eject": "react-scripts eject",
     "lint": "eslint src/**/*.js",
     "lint:fix": "eslint --fix src/**/*.js",
-    "lint:css": "stylelint src/**/*.js"
+    "lint:css": "stylelint src/**/*.js",
+    "postbuild": "react-snap"
+  },
+  "reactSnap": {
+    "include": ["/"],
+    "crawl": false
   },
   "eslintConfig": {
     "extends": "react-app"
