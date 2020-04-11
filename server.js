@@ -24,7 +24,7 @@ const comments = require("./routes/comments");
 const shippingMethods = require("./routes/shippingMethods");
 const paymentMethods = require("./routes/paymentMethods");
 const partners = require("./routes/partners");
-const mainRoute = require("./routes/index");
+// const mainRoute = require("./routes/index");
 
 const app = express();
 app.use(cors());
@@ -44,7 +44,7 @@ mongoose
   .set("useUnifiedTopology", true)
   .connect(db)
   .then(() => console.log("MongoDB Connected"))
-  .catch((err) => console.log(err));
+  .catch(err => console.log(err));
 
 // Passport middleware
 app.use(passport.initialize());
@@ -74,15 +74,16 @@ app.use("/partners", partners);
 // app.use("/", mainRoute);
 
 // NGINX Serves static files.
+// This is in case no route match is found to redirect to index and show 404 with React-Router.
 // Server static assets if in production
-// if (process.env.NODE_ENV === "production") {
-//   // Set static folder
-//   app.use(express.static("client/build"));
+if (process.env.NODE_ENV === "production") {
+  // Set static folder
+  app.use(express.static("client/build"));
 
-//   app.get("*", (req, res) => {
-//     res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
-//   });
-// }
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+  });
+}
 
 const port = process.env.PORT || 5000;
 
