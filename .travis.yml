@@ -31,7 +31,7 @@ deploy:
     region: eu-central-1
     upload_dir: travis-builds
     local_dir: upload
-    cleanup: false
+    skip_cleanup: true
     on:
       branch: master
   - provider: codedeploy
