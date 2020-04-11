@@ -1,3 +1,4 @@
+os: linux
 dist: bionic
 language: node_js
 node_js:
@@ -28,9 +29,9 @@ deploy:
     secret_access_key: $AWS_SECRET
     bucket: fem4
     region: eu-central-1
-    upload-dir: travis-builds
+    upload_dir: travis-builds
     local_dir: upload
-    skip_cleanup: true
+    cleanup: false
     on:
       branch: master
   - provider: codedeploy
