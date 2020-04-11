@@ -31,7 +31,8 @@ deploy:
     region: eu-central-1
     upload_dir: travis-builds
     local_dir: upload
-    skip_cleanup: true
+    cleanup: false
+    edge: true
     on:
       branch: master
   - provider: codedeploy
@@ -43,6 +44,7 @@ deploy:
     bundle_type: zip
     application: Zarina_Application
     deployment_group: Zarina_Deployment_Group
+    edge: true
     on:
       branch: master
 
